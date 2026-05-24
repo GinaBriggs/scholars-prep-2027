@@ -26,6 +26,8 @@ C_numpy = A @ B
 t_numpy = time.perf_counter() - t0
 
 assert np.allclose(C_mine, C_numpy), "The results are not close enough!"
+print(f"mine = {C_mine}")
+print(f"NumPy = {C_numpy}")
 
 print(f"My implementation took {t_mine:.4f} seconds")
 print(f"NumPy implementation took {t_numpy:.4f} seconds")
