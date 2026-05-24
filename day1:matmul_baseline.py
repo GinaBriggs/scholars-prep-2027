@@ -25,9 +25,11 @@ t0 = time.perf_counter()
 C_numpy = A @ B
 t_numpy = time.perf_counter() - t0
 
-assert np.allclose(C_mine, C_numpy), "The results are not close enough!"
-print(f"mine = {C_mine}")
-print(f"NumPy = {C_numpy}")
+# No error because the results are close enough, but if they were not, an AssertionError would be raised with the message
+# You can test my changing a in for i in range(a) to a-1
+assert np.allclose(C_mine, C_numpy), "The results are not close enough!" 
+#print(f"mine = {C_mine}")
+#print(f"NumPy = {C_numpy}")
 
 print(f"My implementation took {t_mine:.4f} seconds")
 print(f"NumPy implementation took {t_numpy:.4f} seconds")
@@ -35,7 +37,7 @@ print(f"NumPy is {t_mine / t_numpy:.2f} times faster than my implementation")
 
 """On Day 1, 
 I wrote a basic matrix multiplication script from scratch, 
-timed it and checked it against NumPy's built in multiplier. 
+timed it and proved my code works correctly by checking it against NumPy's built in multiplier. 
 I've seen that my implementation is significantly slower than NumPy's, 
 which is expected since NumPy uses highly optimized libraries under the hood. 
 This exercise was a good reminder of the importance of using efficient algorithms and 
