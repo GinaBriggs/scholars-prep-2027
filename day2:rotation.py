@@ -6,8 +6,7 @@ def rotate(theta):
     R = np.array([[np.cos(theta), -np.sin(theta)] , [np.sin(theta), np.cos(theta)]])
     return R
 
-# 2. Define a random 2D vector v with seed 42
-np.random.seed(42)
+# 2. Define a random 2D vector v
 v = np.array([1.0, 0.0])
 
 # 3. Pick three angles: 0, pi/4, pi/2 
@@ -17,17 +16,10 @@ ax.grid(True)
 ax.set_xlabel('X Axis', fontsize=10)
 ax.set_ylabel('Y Axis', fontsize=10)
 angle = np.radians([0, 45, 90])
-for x in angle:
+for x, w in zip(angle, ['red', 'green', 'blue']):
     v_rot = rotate(x) @ v
     R = rotate(x)
     print(f"{v_rot} and {v_rot}")
-
-    if x == 0:
-        w ='red'
-    elif x == np.radians(45):
-        w = 'green'
-    else:
-        w = 'blue'
 
     ax.quiver([0], [0], v_rot[0], v_rot[1], angles='xy', scale_units='xy', scale=1, color=w, label=f'{np.degrees(x):.0f}°')
 ax.legend()
